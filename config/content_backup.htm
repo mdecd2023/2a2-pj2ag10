@@ -6,19 +6,201 @@
 <p>組員:41023110 紀宜馨</p>
 <p>分組倉儲:<a href="https://github.com/mdecd2023/2a2-pj2ag10">https://github.com/mdecd2023/2a2-pj2ag10</a></p>
 <h1>pj2</h1>
-<h1>w10</h1>
+<p><span style="background-color: #ffff00;">obs使用心得:</span></p>
+<p>目前使用上除了可以螢幕投影直播外，還可用做虛擬人物做直播，可搭配steam上多款的虛擬人物製作界面進行直播，這款程式在使用上非常的多元。</p>
+<p></p><h1>w10</h1>
 <div>
 <p><span style="background-color: #ffff00;">1.</span>What is zmqRemoteAPI, and how does it relate to CoppeliaSim?</p>
 <p><span style="background-color: #ff0000;">解:</span></p>
+<p>zmqRemoteAPI is a component of CoppeliaSim, a popular 3D simulation software for robotics and automation. zmqRemoteAPI allows remote communication and control of CoppeliaSim simulations using the ZeroMQ messaging library.</p>
+<p>Through zmqRemoteAPI, a user can connect to a running instance of CoppeliaSim from another program or script running on the same computer or a different computer over a network. This enables the user to send commands and receive data from the simulation, allowing for more flexible and complex control of the simulation environment.</p>
+<p>Some of the common use cases for zmqRemoteAPI include developing and testing robot control algorithms, simulating complex environments for robotics research, and creating virtual reality applications.</p>
+<p>Overall, zmqRemoteAPI is an important feature of CoppeliaSim that enables remote communication and control of simulations, making it a versatile and powerful tool for robotics and automation applications.</p>
 <p><span style="background-color: #ffff00;">2.</span>How do you establish a connection between a Python script and CoppeliaSim using zmqRemoteAPI?</p>
 <p><span style="background-color: #ff0000;">解:</span></p>
+<div class="flex-1 overflow-hidden">
+<div class="react-scroll-to-bottom--css-dlbqs-79elbk h-full dark:bg-gray-800">
+<div class="react-scroll-to-bottom--css-dlbqs-1n7m0yu">
+<div class="flex flex-col items-center text-sm dark:bg-gray-800">
+<div class="group w-full text-gray-800 dark:text-gray-100 border-b border-black/10 dark:border-gray-900/50 bg-gray-50 dark:bg-[#444654]">
+<div class="flex p-4 gap-4 text-base md:gap-6 md:max-w-2xl lg:max-w-xl xl:max-w-3xl md:py-6 lg:px-0 m-auto">
+<div class="relative flex flex-col w-[calc(100%-50px)] gap-1 md:gap-3 lg:w-[calc(100%-115px)]">
+<div class="flex flex-grow flex-col gap-3">
+<div class="min-h-[20px] flex flex-col items-start gap-4 whitespace-pre-wrap break-words">
+<div class="markdown prose w-full break-words dark:prose-invert light">
+<p>To establish a connection between a Python script and CoppeliaSim using zmqRemoteAPI, you can follow these steps:</p>
+<ol>
+<li>
+<p>Start CoppeliaSim and load the simulation you want to control.</p>
+</li>
+<li>
+<p>In CoppeliaSim, add a "Child Script" object to your scene. This object will contain the Lua code that defines the remote API functions that your Python script will call.</p>
+</li>
+<li>
+<p>In the "Child Script" object, add the following code to define the remote API server:</p>
+</li>
+</ol>
+<div class="bg-black rounded-md mb-4">
+<div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>scss</span><button class="flex ml-auto gap-2"><svg class="h-4 w-4" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect height="4" rx="1" ry="1" width="8" x="8" y="2"></rect></svg>Copy code</button></div>
+<div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-scss">simRemoteApi<span class="hljs-selector-class">.start</span>(<span class="hljs-number">19999</span>) </code></div>
+</div>
+<p>This code starts the remote API server on port 19999.</p>
+<ol start="4">
+<li>In your Python script, you can establish a connection to the remote API server using the <code>b0RemoteApi</code> library. First, install the library using pip:</li>
+</ol>
+<div class="bg-black rounded-md mb-4">
+<div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><button class="flex ml-auto gap-2"><svg class="h-4 w-4" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect height="4" rx="1" ry="1" width="8" x="8" y="2"></rect></svg>Copy code</button></div>
+<div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs">pip install b0RemoteApi </code></div>
+</div>
+<ol start="5">
+<li>In your Python script, import the <code>b0RemoteApi</code> library and create a remote API client object:</li>
+</ol>
+<div class="bg-black rounded-md mb-4">
+<div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>python</span><button class="flex ml-auto gap-2"><svg class="h-4 w-4" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect height="4" rx="1" ry="1" width="8" x="8" y="2"></rect></svg>Copy code</button></div>
+<div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-python"><span class="hljs-keyword">import</span> b0RemoteApi <span class="hljs-keyword">with</span> b0RemoteApi.RemoteApiClient(<span class="hljs-string">'b0RemoteApi_pythonClient'</span>,<span class="hljs-string">'b0RemoteApi'</span>) <span class="hljs-keyword">as</span> client: <span class="hljs-comment"># Your code here</span> </code></div>
+</div>
+<p>The <code>RemoteApiClient</code> constructor takes two arguments: the first is a string that identifies your client, and the second is the name of the remote API service (in this case, <code>b0RemoteApi</code>).</p>
+<ol start="6">
+<li>Once you have created the client object, you can call remote API functions on the server using the <code>call</code> method:</li>
+</ol>
+<div class="bg-black rounded-md mb-4">
+<div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>python</span><button class="flex ml-auto gap-2"><svg class="h-4 w-4" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect height="4" rx="1" ry="1" width="8" x="8" y="2"></rect></svg>Copy code</button></div>
+<div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-python">res,retInts,retFloats,retStrings,retBuffer=b0RemoteApi.simxCallScriptFunction(client.clientID,<span class="hljs-string">'remoteApiCommandServer'</span>,b0RemoteApi.sim_scripttype_customizationscript,<span class="hljs-string">'myFunction'</span>,[],[],[<span class="hljs-string">'hello'</span>],b0RemoteApi.simx_opmode_blocking) </code></div>
+</div>
+<p>This code calls a Lua function named <code>myFunction</code> in the "Child Script" object, passing the string "hello" as an argument. The <code>simxCallScriptFunction</code> method blocks until the function call is complete.</p>
+<ol start="7">
+<li>To end the connection, call the <code>stopSimulation</code> method on the client object:</li>
+</ol>
+<div class="bg-black rounded-md mb-4">
+<div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>python</span><button class="flex ml-auto gap-2"><svg class="h-4 w-4" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect height="4" rx="1" ry="1" width="8" x="8" y="2"></rect></svg>Copy code</button></div>
+<div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-python">client.simxStopSimulation(b0RemoteApi.simx_opmode_blocking) </code></div>
+</div>
+<p>These are the basic steps to establish a connection between a Python script and CoppeliaSim using zmqRemoteAPI. From here, you can use the remote API to control your simulation in various ways, such as reading sensor data, moving objects, and controlling robots.</p>
+</div>
+</div>
+</div>
+<div class="flex justify-between lg:block">
+<div class="text-gray-400 flex self-end lg:self-center justify-center mt-2 gap-2 md:gap-3 lg:gap-1 lg:absolute lg:top-0 lg:translate-x-full lg:right-0 lg:mt-0 lg:pl-2 visible"><button class="flex ml-auto gap-2 rounded-md p-1 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200 disabled:dark:hover:text-gray-400"><svg class="h-4 w-4" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect height="4" rx="1" ry="1" width="8" x="8" y="2"></rect></svg></button>
+<div class="flex gap-1"><button class="p-1 rounded-md hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200 disabled:dark:hover:text-gray-400"><svg class="h-4 w-4" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg></button><button class="p-1 rounded-md hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200 disabled:dark:hover:text-gray-400"><svg class="h-4 w-4" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"></path></svg></button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full h-32 md:h-48 flex-shrink-0"></div>
+</div>
+<button class="cursor-pointer absolute right-6 bottom-[124px] md:bottom-[120px] z-10 rounded-full border border-gray-200 bg-gray-50 text-gray-600 dark:border-white/10 dark:bg-white/10 dark:text-gray-200"><svg class="h-4 w-4 m-1" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="12" x2="12" y1="5" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></button></div>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full border-t md:border-t-0 dark:border-white/20 md:border-transparent md:dark:border-transparent md:bg-vert-light-gradient bg-white dark:bg-gray-800 md:!bg-transparent dark:md:bg-vert-dark-gradient pt-2"><form class="stretch mx-2 flex flex-row gap-3 last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl">
+<div class="relative flex h-full flex-1 items-stretch md:flex-col">
+<div class="">
+<div class="h-full flex ml-1 md:w-full md:m-auto md:mb-2 gap-0 md:gap-2 justify-center"></div>
+</div>
+</div>
+</form></div>
 <p><span style="background-color: #ffff00;">3.</span>What are some common use cases for zmqRemoteAPI in CoppeliaSim?</p>
 <p><span style="background-color: #ff0000;">解:</span></p>
+<p>zmqRemoteAPI is a powerful tool for remote communication and control of simulations in CoppeliaSim. Here are some common use cases for zmqRemoteAPI in CoppeliaSim:</p>
+<ol>
+<li>
+<p>Robot control and simulation: Robotics researchers and engineers often use CoppeliaSim to simulate the behavior of robots in various scenarios. zmqRemoteAPI allows them to control the robots and interact with the simulation environment from Python or other programming languages, making it easier to develop and test robot control algorithms.</p>
+</li>
+<li>
+<p>Virtual reality applications: CoppeliaSim supports the Oculus Rift and HTC Vive VR headsets, allowing users to create immersive virtual reality environments for training or simulation. zmqRemoteAPI enables developers to create custom VR applications that interact with the simulation environment and respond to user input in real-time.</p>
+</li>
+<li>
+<p>Autonomous vehicle development: CoppeliaSim supports the simulation of autonomous vehicles, including cars, drones, and other vehicles. With zmqRemoteAPI, developers can control the vehicles and test their performance in various scenarios, such as traffic simulation or obstacle avoidance.</p>
+</li>
+<li>
+<p>Industrial automation: CoppeliaSim supports the simulation of various industrial automation scenarios, such as robotic assembly lines, conveyor belts, and packaging machines. With zmqRemoteAPI, engineers can control the behavior of the machines and simulate various scenarios to test and optimize their performance.</p>
+</li>
+<li>
+<p>Education and training: CoppeliaSim is a popular tool for teaching robotics and automation concepts in universities and technical schools. zmqRemoteAPI allows instructors to create custom assignments and projects for students to work on, providing a hands-on learning experience that simulates real-world scenarios.</p>
+</li>
+</ol>
+<p>Overall, zmqRemoteAPI is a versatile and powerful tool for remote communication and control of simulations in CoppeliaSim, enabling a wide range of applications in robotics, automation, virtual reality, and education.</p>
 <p><span style="background-color: #ffff00;">4.</span>What are the advantages and disadvantages of using zmqRemoteAPI compared to other methods of communication between Python and CoppeliaSim?</p>
 <p><span style="background-color: #ff0000;">解:</span></p>
+<div class="flex-1 overflow-hidden">
+<div class="react-scroll-to-bottom--css-dlbqs-79elbk h-full dark:bg-gray-800">
+<div class="react-scroll-to-bottom--css-dlbqs-1n7m0yu">
+<div class="flex flex-col items-center text-sm dark:bg-gray-800">
+<div class="group w-full text-gray-800 dark:text-gray-100 border-b border-black/10 dark:border-gray-900/50 bg-gray-50 dark:bg-[#444654]">
+<div class="flex p-4 gap-4 text-base md:gap-6 md:max-w-2xl lg:max-w-xl xl:max-w-3xl md:py-6 lg:px-0 m-auto">
+<div class="relative flex flex-col w-[calc(100%-50px)] gap-1 md:gap-3 lg:w-[calc(100%-115px)]">
+<div class="flex flex-grow flex-col gap-3">
+<div class="min-h-[20px] flex flex-col items-start gap-4 whitespace-pre-wrap break-words">
+<div class="markdown prose w-full break-words dark:prose-invert light">
+<p>Here are some advantages and disadvantages of using zmqRemoteAPI compared to other methods of communication between Python and CoppeliaSim:</p>
+<p>Advantages:</p>
+<ol>
+<li>
+<p>Versatile and flexible: zmqRemoteAPI allows for bidirectional communication between Python and CoppeliaSim, making it possible to send commands and receive data from the simulation in real-time. This makes it a versatile and flexible tool for developing and testing robotics and automation applications.</p>
+</li>
+<li>
+<p>Easy to use: zmqRemoteAPI provides a simple and easy-to-use interface for remote communication between Python and CoppeliaSim, using the ZeroMQ messaging library. This makes it accessible to developers with little or no experience in networking or distributed systems.</p>
+</li>
+<li>
+<p>Cross-platform: zmqRemoteAPI is supported on multiple platforms, including Windows, Linux, and macOS, making it a viable option for developers using a variety of operating systems.</p>
+</li>
+<li>
+<p>Efficient: zmqRemoteAPI uses a lightweight messaging protocol that is designed for low-latency and high-throughput communication, making it an efficient option for real-time applications.</p>
+</li>
+</ol>
+<p>Disadvantages:</p>
+<ol>
+<li>
+<p>Requires setup: Setting up zmqRemoteAPI requires configuring the remote API server in CoppeliaSim and installing the b0RemoteApi library in Python. This can be a barrier to entry for developers who are not familiar with the setup process.</p>
+</li>
+<li>
+<p>Limited functionality: While zmqRemoteAPI provides a wide range of functionality for controlling simulations in CoppeliaSim, it may not support all of the features or customizations available in the simulation environment. This can limit its usefulness for some applications.</p>
+</li>
+<li>
+<p>Limited to CoppeliaSim: zmqRemoteAPI is specifically designed for use with CoppeliaSim, which may be a disadvantage for developers who need to work with other simulation environments or robotics platforms.</p>
+</li>
+</ol>
+<p>Overall, zmqRemoteAPI is a versatile and efficient tool for remote communication and control of simulations in CoppeliaSim, but it may not be the best option for all applications or environments. Developers should consider their specific needs and constraints when deciding whether to use zmqRemoteAPI or other methods of communication between Python and CoppeliaSim.</p>
+</div>
+</div>
+</div>
+<div class="flex justify-between lg:block">
+<div class="text-gray-400 flex self-end lg:self-center justify-center mt-2 gap-2 md:gap-3 lg:gap-1 lg:absolute lg:top-0 lg:translate-x-full lg:right-0 lg:mt-0 lg:pl-2 visible"><button class="flex ml-auto gap-2 rounded-md p-1 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200 disabled:dark:hover:text-gray-400"><svg class="h-4 w-4" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect height="4" rx="1" ry="1" width="8" x="8" y="2"></rect></svg></button>
+<div class="flex gap-1"><button class="p-1 rounded-md hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200 disabled:dark:hover:text-gray-400"><svg class="h-4 w-4" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg></button><button class="p-1 rounded-md hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200 disabled:dark:hover:text-gray-400"><svg class="h-4 w-4" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"></path></svg></button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full h-32 md:h-48 flex-shrink-0"></div>
+</div>
+<button class="cursor-pointer absolute right-6 bottom-[124px] md:bottom-[120px] z-10 rounded-full border border-gray-200 bg-gray-50 text-gray-600 dark:border-white/10 dark:bg-white/10 dark:text-gray-200"><svg class="h-4 w-4 m-1" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="12" x2="12" y1="5" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></button></div>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full border-t md:border-t-0 dark:border-white/20 md:border-transparent md:dark:border-transparent md:bg-vert-light-gradient bg-white dark:bg-gray-800 md:!bg-transparent dark:md:bg-vert-dark-gradient pt-2"><form class="stretch mx-2 flex flex-row gap-3 last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl">
+<div class="relative flex h-full flex-1 items-stretch md:flex-col">
+<div class="">
+<div class="h-full flex ml-1 md:w-full md:m-auto md:mb-2 gap-0 md:gap-2 justify-center"></div>
+</div>
+</div>
+</form></div>
 <p><span style="background-color: #ffff00;">5.</span>Can you give an example of a project or task that you could complete using zmqRemoteAPI in CoppeliaSim?</p>
 <p><span style="background-color: #ff0000;">解:</span></p>
-</div><h1>Brython</h1>
+<p>Sure, here's an example of a project that could be completed using zmqRemoteAPI in CoppeliaSim:</p>
+<p>Suppose you are working on developing an autonomous delivery robot that needs to navigate through a complex environment to deliver packages. You have a virtual model of the robot and the environment in CoppeliaSim, and you want to develop and test the control algorithms that will enable the robot to navigate through the environment and avoid obstacles.</p>
+<p>Using zmqRemoteAPI, you could write a Python script that sends commands to the virtual robot in CoppeliaSim to control its movement, collect sensor data, and simulate different scenarios. For example, you could use the script to:</p>
+<ol>
+<li>Control the robot's motors to move it forward, backward, left, or right.</li>
+<li>Retrieve sensor data from the robot's cameras, lidar, or other sensors to detect obstacles in the environment.</li>
+<li>Calculate the robot's path through the environment using a navigation algorithm.</li>
+<li>Implement obstacle avoidance and collision detection algorithms to ensure the robot doesn't crash into obstacles.</li>
+<li>Simulate different scenarios, such as changing the position of obstacles or adding new obstacles to the environment, to test the robot's performance in different conditions.</li>
+</ol>
+<p>By using zmqRemoteAPI, you can develop and test these control algorithms in a virtual environment before deploying them on a physical robot. This can save time and reduce the risk of damaging the robot during testing.</p>
+<p>Overall, zmqRemoteAPI is a powerful tool for developing and testing robotics and automation applications in CoppeliaSim, allowing developers to control simulations and collect data in real-time using Python or other programming languages.</p>
+</div>
+<h1>w11</h1>
+<h1>Brython</h1>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
 <h4>Examples:</h4>
 <p style="padding-left: 30px;"><a href="https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d">https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d</a></p>
